@@ -14,7 +14,9 @@ public class LoginStepDefinitions {
     public void user_logs_in_as_store_manager() {
         System.out.println("Login as store manager");
     }
-
+    // Add user verifies that "Dashboard" page subtitle is displayed
+    // any String in "" will become a parameter for step definition method.
+    // "Dashboard" -> changed to {string}
     @Then("user verifies that {string} page subtitle is displayed")
     public void user_verifies_that_page_subtitle_is_displayed(String string) {
         System.out.println("Verifying page subtitle: " + string);
