@@ -9,7 +9,9 @@ public class Hook {
     // Must use @Before (io.cucumber.java)
 
     public void setup(){ // 1
+        System.out.println("################################"); // 8
         System.out.println("Test setup!"); // 2
+
     }
 
     @After // 7
