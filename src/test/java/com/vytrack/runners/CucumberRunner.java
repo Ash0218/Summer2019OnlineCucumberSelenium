@@ -7,8 +7,16 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class) // 1
 @CucumberOptions( // 2
-        features = "src/test/resources/features" // 3
-        // right click features package -> copy path (path to features folder)
+        features = "src/test/resources/features", // 3
+        // added , after creat LoginStepDefinitions class
+            glue = "com/vytrack/step_definitions" // 4
+        /*
+        I amd on the login page
+        Login as store manager
+        Verifying page subtitle: Dashboard
+         */
+
+        // After #3, right click features package -> copy path (path to features folder)
         //  cut all things before src
         // Run -> it shows all the steps we need (step definition)
         /*
