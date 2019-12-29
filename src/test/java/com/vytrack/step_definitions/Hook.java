@@ -20,5 +20,6 @@ public class Hook {
     public void teardown(){ // 3
         System.out.println("Clean up"); // 4
         System.out.println("Test completed!"); // 5
+        System.out.println("################################"); // 9
     }
 }
