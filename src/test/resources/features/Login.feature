@@ -30,4 +30,8 @@ Feature: Login
     And user verifies that "Dashboard" page subtitle is displayed
 
 
+  Scenario: Verify that warning message is displayed when password is not correct
+    Given user is on the login page
+    Then user enters "storemanager85" username and "wrong" password
+    And user verifies that "Invalid user name or password." message is displayed
 
