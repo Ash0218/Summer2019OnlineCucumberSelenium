@@ -37,4 +37,18 @@ public class LoginStepDefinitions {
         System.out.println("Login as a sales manager");
     }
 
+    // Then user enters "storemanager85" username and "wrong" password
+    //  Anything in "" is a parameter -> becomes {string} in here
+    // String string = {string} user name, String string2 = {stirng} password
+    //  It follows the order from left to right.
+    @Then("user enters {string} username and {string} password")
+    public void user_enters_username_and_password(String string, String string2) {
+        System.out.println("Login with "+ string +" username and " + string2 + " password.");
+    }
+
+    @Then("user verifies that {string} message is displayed")
+    public void user_verifies_that_message_is_displayed(String string) {
+        System.out.println("Verified that warning message is displayed: "+string);
+    }
+
 }
