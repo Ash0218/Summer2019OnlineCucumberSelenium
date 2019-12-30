@@ -19,7 +19,8 @@ import org.junit.runner.RunWith;
         Verifying page subtitle: Dashboard
          */
 
-            dryRun = false // 5
+            dryRun = false, // 5
+            tags = "@negative_test" // 6
 
         // After #3, right click features package -> copy path (path to features folder)
         //  cut all things before src
