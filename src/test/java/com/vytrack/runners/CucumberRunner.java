@@ -19,7 +19,7 @@ import org.junit.runner.RunWith;
         Verifying page subtitle: Dashboard
          */
 
-            dryRun = true // 5
+            dryRun = false // 5
 
         // After #3, right click features package -> copy path (path to features folder)
         //  cut all things before src
