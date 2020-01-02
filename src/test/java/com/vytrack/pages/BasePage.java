@@ -3,6 +3,8 @@ package com.vytrack.pages; // 120219
 // EX: top menu elements don't belong to specific page but
 //  top menu appears on every single page, so we can keep them here.
 
+import com.vytrack.utilities.BrowserUtils;
+import com.vytrack.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
@@ -11,8 +13,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.BrowserUtils;
-import utils.Driver;
+
 
 public class BasePage { // 1
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Driver {
     private static WebDriver driver; // 1
+
     // instead of WebDriver, you can use RemoteWebDriver
 
     // you cannot do this if constructor is private:

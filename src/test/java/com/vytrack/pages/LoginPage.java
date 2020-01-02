@@ -5,11 +5,12 @@ package com.vytrack.pages; // 120219
 // Login page = login page class
 // Every page class will store webelements and methods related to that page.
 
+import com.vytrack.utilities.Driver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.Driver;
+
 
 public class LoginPage extends BasePage{
     // After create BasePage (in pages), added "extends BasePage"
