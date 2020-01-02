@@ -1,5 +1,6 @@
 package com.vytrack.step_definitions; // 121719
 
+import com.vytrack.pages.LoginPage;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -7,6 +8,9 @@ import io.cucumber.java.en.Then;
 
 public class LoginStepDefinitions {
     // write code here that turns the phrase above into concrete actions
+
+    LoginPage loginPage = new LoginPage();
+    // created login page object
 
     @Given("user is one the landing page")
     public void user_is_one_the_landing_page() {
@@ -18,6 +22,14 @@ public class LoginStepDefinitions {
     @Then("user logs in as store manager")
     public void user_logs_in_as_store_manager() {
         System.out.println("Login as store manager");
+        String userName = ConfigurationReader.getProperty("user_name");
+        // user_name is from Configuration.properties
+        String password = ConfigurationReader.getProperty("password");
+        // password is from Configuration.properties
+        // in java, we use camel case (ex: userName) for naming variables.
+
+        loginPage.login(userName, password);
+        // login
     }
     // Add user verifies that "Dashboard" page subtitle is displayed
     // any String in "" will become a parameter for step definition method.
