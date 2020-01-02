@@ -5,6 +5,7 @@ import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.testng.Assert;
 
 public class LoginStepDefinitions {
     // write code here that turns the phrase above into concrete actions
@@ -36,6 +37,8 @@ public class LoginStepDefinitions {
     // "Dashboard" -> changed to {string}
     @Then("user verifies that {string} page subtitle is displayed")
     public void user_verifies_that_page_subtitle_is_displayed(String string) {
+        System.out.println(string);
+        Assert.assertEquals(string, loginPage.getPageSubTitle());
         System.out.println("Verifying page subtitle: " + string);
     }
 

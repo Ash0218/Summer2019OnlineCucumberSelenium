@@ -20,7 +20,10 @@ import org.junit.runner.RunWith;
          */
 
             dryRun = false, // 5
-            tags = "", // 6
+            tags = "@store_manager", // 6
+            // put @store_manager in "", then only store manager part will
+            //  be executed.
+
             plugin = {"html:target/default-cucumber-reports"} // 7
 
 
