@@ -1,6 +1,7 @@
 package com.vytrack.step_definitions; // 121719
 
 import com.vytrack.pages.LoginPage;
+import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -38,6 +39,8 @@ public class LoginStepDefinitions {
     @Then("user verifies that {string} page subtitle is displayed")
     public void user_verifies_that_page_subtitle_is_displayed(String string) {
         System.out.println(string);
+        loginPage.waitUntilLoaderMaskDisappear();
+        BrowserUtils.wait(2);
         Assert.assertEquals(string, loginPage.getPageSubTitle());
         System.out.println("Verifying page subtitle: " + string);
     }
