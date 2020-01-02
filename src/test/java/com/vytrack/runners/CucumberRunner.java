@@ -20,7 +20,9 @@ import org.junit.runner.RunWith;
          */
 
             dryRun = false, // 5
-            tags = "@negative_test" // 6
+            tags = "", // 6
+            plugin = {"html:target/default-cucumber-reports"} // 7
+
 
         // After #3, right click features package -> copy path (path to features folder)
         //  cut all things before src

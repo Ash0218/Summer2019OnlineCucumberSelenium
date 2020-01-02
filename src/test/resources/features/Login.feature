@@ -18,7 +18,7 @@ Feature: Login
     Then user logs in as store manager
     And user verifies that "Dashboard" page subtitle is displayed
 
-  @ @driver
+  @driver
   Scenario: Login as driver
     Given user is on the login page
     Then user logs in as driver
@@ -38,7 +38,7 @@ Feature: Login
     And user verifies that "Invalid user name or password." message is displayed
 
 
-  @negative_test
+  @negative_test @driver
   Scenario: Verify that warning message is displayed when username is not correct
     Given user is on the login page
     Then user enters "wrong_username" username and "UserUser123" password
