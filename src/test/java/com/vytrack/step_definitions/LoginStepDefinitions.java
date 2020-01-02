@@ -1,13 +1,18 @@
 package com.vytrack.step_definitions; // 121719
 
+import com.vytrack.utilities.ConfigurationReader;
+import com.vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class LoginStepDefinitions {
+    // write code here that turns the phrase above into concrete actions
 
     @Given("user is one the landing page")
     public void user_is_one_the_landing_page() {
         System.out.println("I amd on the login page");
+        Driver.get().get(ConfigurationReader.getProperty("url"));
+        // open browser
     }
 
     @Then("user logs in as store manager")
