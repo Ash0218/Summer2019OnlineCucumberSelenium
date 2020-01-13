@@ -8,8 +8,10 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class) // 1
 @CucumberOptions( // 2
         features = "src/test/resources/features", // 3
-        // added , after creat LoginStepDefinitions class
+        // added , after create LoginStepDefinitions class
         // path to features
+        // After #3, right click features package -> copy path (path to features folder)
+        //  cut all things before src
 
             glue = "com/vytrack/step_definitions", // 4
         // path to step_definitions
@@ -27,8 +29,7 @@ import org.junit.runner.RunWith;
             plugin = {"html:target/default-cucumber-reports"} // 7
 
 
-        // After #3, right click features package -> copy path (path to features folder)
-        //  cut all things before src
+
         // Run -> it shows all the steps we need (step definition)
         /*
         There were undefined steps. You can implement missing steps with the snippets below:
