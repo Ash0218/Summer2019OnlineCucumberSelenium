@@ -21,4 +21,8 @@ public class CalendarEventsPage extends BasePage{ // 1
         BrowserUtils.waitForClickablility(createCalendarEvent, 5); // 7
         createCalendarEvent.click(); // 5
     }
+
+    public List<String> getColumnNames(){ // 10
+        return BrowserUtils.getListOfString(columnNames); // 11
+    }
 }
