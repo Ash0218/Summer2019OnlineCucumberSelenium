@@ -17,3 +17,11 @@ Feature: Smoke test
       # syntax such as Then, When, And does not matter -> you can put
       #  anything.
 
+  Scenario: Verify Vehicle page
+    And user navigates to "Fleet" then to "Vehicles"
+    Then user verifies that "All Cars" page subtitle is displayed
+
+  Scenario: Verify Accounts page
+    And user navigates to "Customers" then to "Accounts"
+    Then user verifies that "All accounts" page subtitle is displayed
+
