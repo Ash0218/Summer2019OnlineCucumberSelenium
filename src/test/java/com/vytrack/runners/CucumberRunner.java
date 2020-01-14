@@ -22,11 +22,19 @@ import org.junit.runner.RunWith;
          */
 
             dryRun = false, // 5
-            tags = "@store_manager", // 6
+         //   tags = "@store_manager", // 6
             // put @store_manager in "", then only store manager part will
             //  be executed.
 
-            plugin = {"html:target/default-cucumber-reports"} // 7
+                tags = "@smoke_test", // 8
+        // replaced #6 to #8.
+        // #8 was added after creating SmokeTest.feature in feature
+        //  file. Then, change #5 to True (it was false before). Then
+        //  click run (on the bottom of this page).
+
+            plugin = {"html:target/default-cucumber-reports",
+                    "json:target/cucumber.json"} // 7
+            // added "json:target/cucumber.json" on 121919
 
 
 

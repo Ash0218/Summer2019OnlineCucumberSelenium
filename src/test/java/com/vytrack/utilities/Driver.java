@@ -3,6 +3,7 @@ package com.vytrack.utilities; // 112619
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Driver {
@@ -31,6 +32,18 @@ public class Driver {
                         WebDriverManager.chromedriver().setup(); // 8
                         driver = new ChromeDriver(); // 9
                         break; // 10
+                    case "chrome_headless": // 22
+                        WebDriverManager.chromedriver().setup(); // 23
+                        ChromeOptions options = new ChromeOptions(); // 24
+                        // to configure chrome browser for tests
+
+                        options.setHeadless(true); // 25
+                        // to run tests without interface, set to true
+
+                        driver = new ChromeDriver(options); // 25
+                        // use this instead of #9
+
+                        break; // 25
 
                     case "firefox": // 12
                         WebDriverManager.firefoxdriver().setup(); // 13

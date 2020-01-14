@@ -12,8 +12,8 @@ Feature: Smoke test
     And user verifies that "Dashboard" page subtitle is displayed
 
     Scenario: Verify Manage Dashboards page
-      When user navigates to "Dashboards" then to "Manage Dashboards"
-      And user verifies that "All Manage Dashboards" page subtitle is displayed
+      And user navigates to "Dashboards" then to "Manage Dashboards"
+      Then user verifies that "All Manage Dashboards" page subtitle is displayed
       # syntax such as Then, When, And does not matter -> you can put
       #  anything.
 

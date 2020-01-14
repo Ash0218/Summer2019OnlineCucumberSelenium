@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -66,7 +67,9 @@ public class BasePage { // 1
             // no loader mask, all good, return true
 
         } catch (WebDriverException e){ // 28
-            System.out.println(e.getMessage()); // 29
+            e.printStackTrace(); // 29
+            // used this instead of below
+            //   System.out.println(e.getMessage()); // 29
         }
         return false; // 25
 
@@ -77,6 +80,7 @@ public class BasePage { // 1
     //  as a String as well. Then based on these values, locators will be
     //  created.
     public void navigateTo(String moduleName, String subModuleName) { // 4
+    //    Actions actions = new Action(Driver.get());
         String moduleLocator = "//*[normalize-space()='" + moduleName + "' and @class='title title-level-1']"; // 5
         // moduleName -> it can be Dashboard, Fleet, Customers, etc in the website,
         //  https://qa1.vytrack.com/

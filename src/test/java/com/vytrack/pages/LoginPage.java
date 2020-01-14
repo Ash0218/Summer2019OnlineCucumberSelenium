@@ -5,6 +5,7 @@ package com.vytrack.pages; // 120219
 // Login page = login page class
 // Every page class will store webelements and methods related to that page.
 
+import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -47,6 +48,30 @@ public class LoginPage extends BasePage{
         userNameInput.sendKeys(userName); // 8
         passwordInput.sendKeys(password, Keys.ENTER); // 9
         // Keys.Enter -> it's like clicking Login button in the website.
+    }
+
+    public void login(){ // 14
+        login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password")); // 14
+    }
+
+    public void login(String role){ // 14
+        String userName = "";
+        String password = ConfigurationReader.getProperty("password");
+
+        switch (role) {
+            case "driver":
+                userName = ConfigurationReader.getProperty("driver.username");
+                break;
+            case "store manager":
+                userName = ConfigurationReader.getProperty("store.manager.username");
+                break;
+            case "sales manager":
+                userName = ConfigurationReader.getProperty("sales.manager.username");
+                break;
+            default:
+                throw new RuntimeException("Invalid role!");
+        }
+        login(userName, password);
     }
 
 
