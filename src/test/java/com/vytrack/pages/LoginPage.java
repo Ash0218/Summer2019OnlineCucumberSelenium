@@ -1,9 +1,4 @@
-package com.vytrack.pages; // 120219
-
-// according to page object model design, we have to create corresponded
-//  page class for each page of application.
-// Login page = login page class
-// Every page class will store webelements and methods related to that page.
+package com.vytrack.pages;
 
 import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
@@ -12,49 +7,52 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
+//according to page object model design
+//we have to create corresponded page class
+//for each page of application
+//login page = login page class
+//every page class will store webelements and methods related to that page
 public class LoginPage extends BasePage{
-    // After create BasePage (in pages), added "extends BasePage"
 
-    @FindBy(id = "prependedInput") // 4
-    // this line will initialize web element
+    @FindBy(id = "prependedInput") //this line will initialize web element
+    public WebElement userNameInput;
 
-    public WebElement userNameInput; // 3
+    @FindBy(id = "prependedInput2")//without findby, web element will be null
+    public WebElement passwordInput;
 
-    @FindBy(id = "prependedInput2") // 6
-    // without @FindBy, web element will be null
+    @FindBy(id = "_submit")
+    public WebElement loginButton;
 
-    public WebElement passwordInput; // 5
+    @FindBy(css = "[class='alert alert-error']")
+    public WebElement warningMessage;
 
-    @FindBy(id = "_submit") // 11
-    public WebElement loginButton; // 10
-
-    @FindBy(css = "[class='alert alert-error']") // 13
-    public WebElement warningMessage; // 12
-
-    public LoginPage(){ // 1
-        PageFactory.initElements(Driver.get(), this); // 2
-        // it's mandatory if you want to use @FindBy annotation.
-        // this -> current class (LoginPage here)
-        // Driver.get() returns webdriver object.
+    public LoginPage() {
+        //it's mandatory if you want to use @FindBy annotation
+        //this means LoginPage class
+        //Driver.get() return webdriver object
+        PageFactory.initElements(Driver.get(), this);
     }
 
-    /*
-    Reusable login method
-    Call this method and provide username and password as a parameter
-     to login.
+    /**
+     * reusable login method
+     * just call this method to login
+     * provide username and password as parameters
+     *
+     * @param userName
+     * @param password
      */
-    public void login(String userName, String password){ // 7
-        userNameInput.sendKeys(userName); // 8
-        passwordInput.sendKeys(password, Keys.ENTER); // 9
+    public void login(String userName, String password) {
+        userNameInput.sendKeys(userName);
+        //Keys.ENTER to replace login click
+        passwordInput.sendKeys(password, Keys.ENTER);
         // Keys.Enter -> it's like clicking Login button in the website.
     }
 
-    public void login(){ // 14
-        login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password")); // 14
+    public void login() {
+        login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
     }
 
-    public void login(String role){ // 14
+    public void login(String role) {
         String userName = "";
         String password = ConfigurationReader.getProperty("password");
 
@@ -73,10 +71,5 @@ public class LoginPage extends BasePage{
         }
         login(userName, password);
     }
-
-
-
-
-
 
 }

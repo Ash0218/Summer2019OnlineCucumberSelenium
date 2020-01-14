@@ -1,7 +1,4 @@
-package com.vytrack.pages; // 120219
-// everything that is in common among pagescan go here.
-// EX: top menu elements don't belong to specific page but
-//  top menu appears on every single page, so we can keep them here.
+package com.vytrack.pages;
 
 import com.vytrack.utilities.BrowserUtils;
 import com.vytrack.utilities.Driver;
@@ -15,73 +12,81 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+//everything that is in common among pages
+//can go here
+//for example top menu elements don't belong to specific page
+//top menu appears on every single page
+//so we can keep them here
+public class BasePage {
 
-public class BasePage { // 1
-
-    @FindBy(css = "div[class='loader-mask shown']") // 8
+    @FindBy(css = "div[class='loader-mask shown']")
     // div[class='loader-mask shown'] -> from CalendarEventsTests of vytrack package.
-    // (#28)
-    public WebElement loaderMask; // 7
+    public WebElement loaderMask;
 
-    @FindBy(css = "h1[class='oro-subtitle']") // 32
-    public WebElement pageSubTitle; // 31
+    @FindBy(css = "h1[class='oro-subtitle']")
+    public WebElement pageSubTitle;
 
-    @FindBy(css = "#user-menu > a") // 34
-    public WebElement userName; // 33
+    @FindBy(css = "#user-menu > a")
+    public WebElement userName;
 
-    @FindBy(linkText = "Logout") // 36
-    public WebElement logOutLink; // 35
+    @FindBy(linkText = "Logout")
+    public WebElement logOutLink;
 
-    @FindBy(linkText = "My User") // 38
-    public WebElement myUser; // 37
+    @FindBy(linkText = "My User")
+    public WebElement myUser;
 
-
-    public BasePage() { // 2
-        PageFactory.initElements(Driver.get(), this); // 3
-        // this method requires to provide webdriver object for @FindBy
-        //  and page class. this -> current page class.
-
+    public BasePage() {
+        //this method requires to provide webdriver object for @FindBy
+        //and page class
+        //this means this page class
+        PageFactory.initElements(Driver.get(), this);
     }
 
-
-    public boolean waitUntilLoaderMaskDisappear() { // 19
+    /**
+     * While this loading screen present, html code is a not complete
+     * Some elements can be missing
+     * Also, you won't be able to interact with any elements
+     * All actions will be intercepted
+     * Waits until loader mask (loading bar, spinning wheel) disappears
+     *
+     * @return true if loader mask is gone, false if something went wrong
+     */
+    public boolean waitUntilLoaderMaskDisappear() {
         // you can use void instead of boolean
-        WebDriverWait wait = new WebDriverWait(Driver.get(), 30); // 20
-
-        try { // 22
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loader-mask shown']"))); // 21
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 30);
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("div[class='loader-mask shown']")));
             // waits until loader mask (loading bar or spinning wheel) disappear
             // While this loading screen present, html code is not complete.
             // Some elements can be missing. Also, you won't be able to
             //  interact with any elements.
             // All actions will be intercepted
 
-            return true;  // 24
+            return true;
             // return true if loader mask is gone. false if something went wrong.
 
-        } catch (NoSuchElementException e) { // 23
-            System.out.println("Loader mask not found"); // 27
-            e.printStackTrace(); // 27
-         //   System.out.println(e.getMessage()); // 26
-            return true; // 30
-            // no loader mask, all good, return true
-
-        } catch (WebDriverException e){ // 28
-            e.printStackTrace(); // 29
-            // used this instead of below
-            //   System.out.println(e.getMessage()); // 29
+        } catch (NoSuchElementException e) {
+            System.out.println("Loader mask not found!");
+            e.printStackTrace();
+            return true; // no loader mask, all good, return true
+        } catch (WebDriverException e) {
+            e.printStackTrace();
         }
-        return false; // 25
-
+        return false;
     }
 
-    // this method stands for navigation in vytrack app.
-    // Provide tab name, ex: Fleet as a String and module name, ex: Vehicles
-    //  as a String as well. Then based on these values, locators will be
-    //  created.
-    public void navigateTo(String moduleName, String subModuleName) { // 4
-    //    Actions actions = new Action(Driver.get());
-        String moduleLocator = "//*[normalize-space()='" + moduleName + "' and @class='title title-level-1']"; // 5
+    /**
+     * This method stands for navigation in vytrack app
+     * provide tab name, for example "Fleet" as a String
+     * and module name, for example "Vehicles" as a String as well
+     * then based on these values, locators will be created
+     *
+     * @param moduleName
+     * @param subModuleName normalize-space() same line .trim() in java
+     */
+    public void navigateTo(String moduleName, String subModuleName) {
+        Actions actions = new Actions(Driver.get());
+        String moduleLocator = "//*[normalize-space()='" + moduleName + "' and @class='title title-level-1']";
         // moduleName -> it can be Dashboard, Fleet, Customers, etc in the website,
         //  https://qa1.vytrack.com/
         // //*[normalize-space()='Fleet' and @class='title title-level-1']
@@ -89,58 +94,66 @@ public class BasePage { // 1
         // normalize-space() -> same as .trim() in java. It removes spaces
         //  between codes.
 
-        String subModuleLocator = "//*[normalize-space()='" + subModuleName + "' and @class='title title-level-2']"; // 6
+        String subModuleLocator = "//*[normalize-space()='" + subModuleName + "' and @class='title title-level-2']";
         // //*[normalize-space()='Vehicles' and @class='title title-level-2']
         //  -> deleted "Vehicles" and put "subModuleName"
 
-        WebDriverWait wait = new WebDriverWait(Driver.get(), 10); // 9
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(moduleLocator))); // 10
+        WebDriverWait wait = new WebDriverWait(Driver.get(), 20);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(moduleLocator)));
 
-        WebElement module = Driver.get().findElement(By.xpath(moduleLocator)); // 11
+        WebElement module = Driver.get().findElement(By.xpath(moduleLocator));
+        wait.until(ExpectedConditions.visibilityOf(module));
+        wait.until(ExpectedConditions.elementToBeClickable(module));
 
-        wait.until(ExpectedConditions.visibilityOf(module)); // 12
-        wait.until(ExpectedConditions.elementToBeClickable(module)); // 13
-
-        waitUntilLoaderMaskDisappear(); // 54
+        waitUntilLoaderMaskDisappear();
         // added this to avoid error
 
-        module.click(); // 14
-        // once we click the module, submodule should be visible.
-
-        WebElement subModule = Driver.get().findElement(By.xpath(subModuleLocator)); // 15
-        wait.until(ExpectedConditions.visibilityOf(subModule)); // 16
-        subModule.click(); // 17, 18
-
-
+        BrowserUtils.clickWithWait(module); //if click is not working well
+        WebElement subModule = Driver.get().findElement(By.xpath(subModuleLocator));
+        if (!subModule.isDisplayed()) {
+            actions.doubleClick(module).doubleClick().build().perform();
+            try {
+                wait.until(ExpectedConditions.visibilityOf(subModule));
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                BrowserUtils.clickWithJS(module);
+            }
+        }
+        BrowserUtils.clickWithWait(subModule); //if click is not working well
+        //it waits until page is loaded and ajax calls are done
+        BrowserUtils.waitForPageToLoad(10);
     }
 
-
-    public String getPageSubTitle(){ // 38
-        waitUntilLoaderMaskDisappear(); // 39
-        BrowserUtils.waitForStaleElement(pageSubTitle); // 40
-        return pageSubTitle.getText(); // 41
+    /**
+     * @return page name, for example: Dashboard
+     */
+    public String getPageSubTitle() {
+        //ant time we are verifying page name, or page subtitle, loader mask appears
+        waitUntilLoaderMaskDisappear();
+        BrowserUtils.waitForStaleElement(pageSubTitle);
+        return pageSubTitle.getText();
     }
 
-    public String getUserName(){ // 42
-        waitUntilLoaderMaskDisappear(); // 43
-        BrowserUtils.waitForVisibility(userName, 5); // 44
-        return userName.getText(); // 45
+    public String getUserName() {
+        waitUntilLoaderMaskDisappear();
+        BrowserUtils.waitForVisibility(userName, 5);
+        return userName.getText();
     }
 
-    public void logOut(){ // 46
-        BrowserUtils.wait(2); // 47
-        BrowserUtils.ClickWithJS(userName); // 48
-        BrowserUtils.ClickWithJS(logOutLink); // 49
+    public void logOut() {
+        BrowserUtils.wait(2);
+        BrowserUtils.clickWithJS(userName);
+        BrowserUtils.clickWithJS(logOutLink);
     }
 
-    public void goToMyUser(){ // 50
-        waitUntilLoaderMaskDisappear(); // 51
-        BrowserUtils.waitForClickablility(userName, 5).click(); // 52
-        BrowserUtils.waitForClickablility(myUser, 5).click(); // 53
+    public void goToMyUser() {
+        waitUntilLoaderMaskDisappear();
+        BrowserUtils.waitForClickablility(userName, 5).click();
+        BrowserUtils.waitForClickablility(myUser, 5).click();
     }
 
-
-
-
+    public void waitForPageSubTitle(String pageSubtitleText) {
+        new WebDriverWait(Driver.get(), 10).until(ExpectedConditions.textToBe(By.cssSelector("h1[class='oro-subtitle']"), pageSubtitleText));
+    }
 
 }

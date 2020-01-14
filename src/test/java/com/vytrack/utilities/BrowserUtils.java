@@ -57,7 +57,7 @@ public class BrowserUtils {
     }
 
     // clicks on element which is using JavaScript
-    public static void ClickWithJS(WebElement element) { // 21
+    public static void clickWithJS(WebElement element) {// 21
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].scrollIntoView(true);", element); // 22
         ((JavascriptExecutor) Driver.get()).executeScript("arguments[0].click();", element); // 23
     }
@@ -197,6 +197,8 @@ public class BrowserUtils {
         }
         return listOfStrings;
     }
+
+
 
 
 }

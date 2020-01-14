@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
         // After #3, right click features package -> copy path (path to features folder)
         //  cut all things before src
 
+  //      features = "src/test/resources/features/activities/CalendarEvents.feature", // 11
+
             glue = "com/vytrack/step_definitions", // 4
         // path to step_definitions
         /* After #4,
@@ -26,11 +28,16 @@ import org.junit.runner.RunWith;
             // put @store_manager in "", then only store manager part will
             //  be executed.
 
-                tags = "@smoke_test", // 8
+        //    dryRun = true, // 12
+
+           //     tags = "@smoke_test", // 8
         // replaced #6 to #8.
         // #8 was added after creating SmokeTest.feature in feature
         //  file. Then, change #5 to True (it was false before). Then
         //  click run (on the bottom of this page).
+
+            tags = "@calendar_events", // 9
+         //       tags = "", // 10
 
             plugin = {"html:target/default-cucumber-reports",
                     "json:target/cucumber.json"} // 7
