@@ -1,3 +1,4 @@
+@calendar_events
 Feature: All calendar events
 
   Scenario: Verify column names
