@@ -41,6 +41,8 @@ import org.junit.runner.RunWith;
 
          //   tags = "@driver_with_data_table", // 13
 
+            tags = "@login_with_role", // 14
+
             plugin = {"html:target/default-cucumber-reports",
                     "json:target/cucumber.json"} // 7
             // added "json:target/cucumber.json" on 121919

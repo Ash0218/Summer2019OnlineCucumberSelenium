@@ -74,3 +74,14 @@ Feature: Login
     Given user is on the login page
     Then user logs in as "store manager"
 
+
+  @login_with_role_ddt
+  Scenario Outline: DDT example, Login as <role>
+    Given user is on the login page
+    Then user logs in as "<role>"
+
+    Examples: roles
+      | role          |
+      | driver        |
+      | sales manager |
+      | store manager |

@@ -84,12 +84,15 @@ public class LoginStepDefinitions {
         loginPage.login(dataTable.get("username"), dataTable.get("password"));
     }
 
-    /*
+
     @Then("user logs in as {string}")
     public void user_logs_in_as(String role) {
+        // role is a parameter which gets data from @login_with_role from
+        // Login.feature
         loginPage.login(role);
     }
 
+    /*
     @Then("the page title should be {string}")
     public void the_page_title_should_be(String string) {
         BrowserUtils.waitForPageTitle(string);
