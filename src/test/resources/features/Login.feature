@@ -53,3 +53,24 @@ Feature: Login
       | password | UserUser123 |
     # | key | value |
       And user verifies that "Quick Launchpad" page subtitle is displayed
+
+
+
+  @login_with_role
+  Scenario: Login as driver
+    Given user is on the login page
+    Then user logs in as "driver"
+    # anything in " " will become a parameter which makes step definitions
+    #  more usable and flexible. B.c based on parameter, we can control
+    #  step definitions.
+
+  @login_with_role
+  Scenario: Login as sales manager
+    Given user is on the login page
+    Then user logs in as "sales manager"
+
+  @login_with_role
+  Scenario: Login as store manager
+    Given user is on the login page
+    Then user logs in as "store manager"
+

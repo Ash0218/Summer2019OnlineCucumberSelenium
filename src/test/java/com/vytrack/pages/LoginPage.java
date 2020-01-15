@@ -46,13 +46,14 @@ public class LoginPage extends BasePage{
         //Keys.ENTER to replace login click
         passwordInput.sendKeys(password, Keys.ENTER);
         // Keys.Enter -> it's like clicking Login button in the website.
-    }
+    } // this login method does not take data from properties file. But
+    // we use this to LoginStepDefinition to login.
 
     public void login() {
         login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
     }
 
-    public void login(String role) {
+    public void login(String role) { // this method read properties file
         String userName = "";
         String password = ConfigurationReader.getProperty("password");
 
