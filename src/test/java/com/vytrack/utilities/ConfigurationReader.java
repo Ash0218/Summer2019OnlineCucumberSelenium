@@ -18,6 +18,8 @@ public class ConfigurationReader {
             //  configuration.properties file. (initialize properties file)
             // FileInputStream on the right side throws an error -> need
             //  try/ catch to solve this.
+            // Make sure that "configuration.properties" is same name with
+            //  configuration.properties file.
 
             configFile = new Properties(); // 7
             // load your properties file

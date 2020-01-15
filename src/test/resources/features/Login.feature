@@ -98,3 +98,21 @@ Feature: Login
       | user160         | UserUser123 |
       | salesmanager110 | UserUser123 |
 
+
+  @login_with_roles_ddt_2
+  Scenario Outline: Login as <role> and verify <title> page title is correct
+    Given user is on the login page
+    And user logs in as "<role>"
+    When user navigates to "<module>" then to "<sub module>"
+    Then the page title should be "<title>"
+
+    Examples: drivers
+      | role   | module     | sub module      | title                                                        |
+      | driver | Fleet      | Vehicles        | Car - Entities - System - Car - Entities - System            |
+      | driver | Fleet      | Vehicles Model  | Vehicles Model - Entities - System - Car - Entities - System |
+      | driver | Customers  | Accounts        | Accounts - Customers                                         |
+      | driver | Customers  | Contacts        | Contacts - Customers                                         |
+      | driver | Activities | Calendar Events | Calendar Events - Activities                                 |
+      | driver | System     | Jobs            | Jobs - System                                                |
+      # the first one in title was found from inspect of the website
+

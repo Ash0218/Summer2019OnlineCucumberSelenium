@@ -92,13 +92,13 @@ public class LoginStepDefinitions {
         loginPage.login(role);
     }
 
-    /*
+
     @Then("the page title should be {string}")
     public void the_page_title_should_be(String string) {
-        BrowserUtils.waitForPageTitle(string);
-        Assert.assertEquals("Title is incorrect", string, Driver.get().getTitle());
+        // string -> expected title
+       Assert.assertEquals("Title is incorrect: " + string, Driver.get().getTitle());
+       // Driver.get().getTitle() -> actual title
+        // "Title is incorrect: " -> message in case of error
     }
-
-*/
 
 }
