@@ -59,12 +59,15 @@ public class LoginPage extends BasePage{
         switch (role) {
             case "driver":
                 userName = ConfigurationReader.getProperty("driver.username");
+                // "driver.username" is from configurtion.properties
                 break;
             case "store manager":
                 userName = ConfigurationReader.getProperty("store.manager.username");
+                // "store.manager.username" is from configurtion.properties
                 break;
             case "sales manager":
                 userName = ConfigurationReader.getProperty("sales.manager.username");
+                // "sales.manager.username" is from configurtion.properties
                 break;
             default:
                 throw new RuntimeException("Invalid role!");
