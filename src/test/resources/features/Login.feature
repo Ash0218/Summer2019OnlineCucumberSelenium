@@ -52,3 +52,4 @@ Feature: Login
       | username | user160     |
       | password | UserUser123 |
     # | key | value |
+      And user verifies that "Quick Launchpad" page subtitle is displayed
