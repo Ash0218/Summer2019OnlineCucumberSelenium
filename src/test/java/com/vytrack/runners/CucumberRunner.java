@@ -23,12 +23,12 @@ import org.junit.runner.RunWith;
         Verifying page subtitle: Dashboard
          */
 
-        //    dryRun = false, // 5
+            dryRun = false, // 5
          //   tags = "@store_manager", // 6
             // put @store_manager in "", then only store manager part will
             //  be executed.
 
-            dryRun = true, // 12
+         //   dryRun = true, // 12
 
            //     tags = "@smoke_test", // 8
         // replaced #6 to #8.
