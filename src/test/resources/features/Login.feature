@@ -38,9 +38,18 @@ Feature: Login
     And user verifies that "Invalid user name or password." message is displayed
 
 
-  @negative_test @driver
+  @negative_test
   Scenario: Verify that warning message is displayed when username is not correct
     Given user is on the login page
     Then user enters "wrong_username" username and "UserUser123" password
     And user verifies that "Invalid user name or password." message is displayed
 
+
+    @driver_with_data_table
+  Scenario: Login as driver (data table example)
+    Given user is on the login page
+    Then user logs in as driver with following credentials
+      | username | user160     |
+      | password | UserUser123 |
+    # | key | value |
+    And user verifies that "Quick Launchpad" page subtitle is displayed

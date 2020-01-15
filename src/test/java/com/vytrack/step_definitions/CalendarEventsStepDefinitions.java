@@ -1,7 +1,9 @@
 package com.vytrack.step_definitions; // 122019
 
 import com.vytrack.pages.CalendarEventsPage;
+import com.vytrack.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 
 import java.util.List;
 
@@ -22,6 +24,7 @@ public class CalendarEventsStepDefinitions {
 
  CalendarEventsPage calendarEventsPage = new CalendarEventsPage(); // 5
 
+
  @Then("user navigates to “Activities” then to “Calendar Events”") //1
     public void user_navigates_to_Activities_then_to_Calendar_Events() { // 1
 
@@ -32,7 +35,9 @@ public class CalendarEventsStepDefinitions {
         public void user_Verifies_that_column_names_are_displayed(List<String> dataTable) { // 3
         // instead of #2, use #3
         System.out.println(dataTable); // 4
-
+        calendarEventsPage.waitUntilLoaderMaskDisappear(); // 7
+        BrowserUtils.wait(3); // 8
+        Assert.assertEquals(dataTable, calendarEventsPage.getColumnNames()); // 6
 
         }
 
