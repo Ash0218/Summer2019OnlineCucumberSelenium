@@ -84,6 +84,7 @@ public class LoginStepDefinitions {
         loginPage.login(dataTable.get("username"), dataTable.get("password"));
     }
 
+    /*
     @Then("user logs in as {string}")
     public void user_logs_in_as(String role) {
         loginPage.login(role);
@@ -94,5 +95,7 @@ public class LoginStepDefinitions {
         BrowserUtils.waitForPageTitle(string);
         Assert.assertEquals("Title is incorrect", string, Driver.get().getTitle());
     }
+
+*/
 
 }
