@@ -2,6 +2,7 @@ package com.vytrack.step_definitions; // 123019
 
 import com.vytrack.pages.CreateCarPage;
 import com.vytrack.pages.VehiclesPage;
+import com.vytrack.utilities.BrowserUtils;
 import io.cucumber.java.en.Then;
 
 import java.util.List;
@@ -38,7 +39,19 @@ public class CreateCarStepDefinitions {
   //  public void user_adds_new_car_information(io.cucumber.datatable.DataTable dataTable) {
     public void user_adds_new_car_information(List<Map<String, String>> dataTable) {
         // changed data table
-
+        // as many rows of data you have, it will create cars
+        for (Map<String, String> map : dataTable){
+            // put all the information of the columns inside Map.
+            createCarPage.licensePlateElement.sendKeys(map.get("License Plate"));
+            createCarPage.driverElement.sendKeys(map.get("Driver"));
+            createCarPage.logoElement.sendKeys(map.get("Location"));
+            // logoElement = location of Element
+            createCarPage.modelYearElement.sendKeys(map.get("Model Year"));
+            createCarPage.colorElement.sendKeys(map.get("Color"));
+            BrowserUtils.wait(2); // for demo
+            createCarPage.saveAndCloseButtonElement.click();
+            BrowserUtils.wait(2); // for demo
+        }
     }
 
 }
