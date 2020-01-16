@@ -1,8 +1,7 @@
 @create_car
 Feature: Create new car
 
-
-  Scenario: Verify column names
+  Scenario: Create new car
     Given user is on the login page
     And user logs in as store manager
     Then user navigates to "Fleet" then to "Vehicles"

@@ -40,11 +40,16 @@ public class CreateCarStepDefinitions {
     public void user_adds_new_car_information(List<Map<String, String>> dataTable) {
         // changed data table
         // as many rows of data you have, it will create cars
+        createCarPage.waitUntilLoaderMaskDisappear();
+        // wait
+        System.out.println(dataTable);
         for (Map<String, String> map : dataTable){
             // put all the information of the columns inside Map.
             createCarPage.licensePlateElement.sendKeys(map.get("License Plate"));
+            // make sure you type the correct spelling from the table. ex: "License Plate"
+            //  or you will have null.
             createCarPage.driverElement.sendKeys(map.get("Driver"));
-            createCarPage.logoElement.sendKeys(map.get("Location"));
+            createCarPage.locationElement.sendKeys(map.get("Location"));
             // logoElement = location of Element
             createCarPage.modelYearElement.sendKeys(map.get("Model Year"));
             createCarPage.colorElement.sendKeys(map.get("Color"));

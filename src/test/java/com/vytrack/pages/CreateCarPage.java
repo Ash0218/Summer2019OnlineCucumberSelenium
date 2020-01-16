@@ -20,6 +20,15 @@ public class CreateCarPage extends BasePage{
     @FindBy(css = "[class='btn btn-success action-button']")
     public WebElement saveAndCloseButtonElement;
 
+    @FindBy(xpath = "//li//button[contains(text(),'Save and New')]")
+    public WebElement saveAndNew;
+
+    @FindBy(xpath = "//li//button[contains(text(),'Save and Close')]")
+    public WebElement saveAndCloseButtonFromMenuElement;
+
+    @FindBy(css = "div[class='btn-group pull-right'] > a[data-toggle='dropdown']")
+    public WebElement saveAndCloseToggle;
+
     @FindBy(css = "div[id*='FuelType']")
     public WebElement fuelTypeElement;
 
@@ -86,6 +95,22 @@ public class CreateCarPage extends BasePage{
     public void uploadLogo(String pathToTheFile){
         BrowserUtils.waitForVisibility(logoElement, 15);
         logoElement.sendKeys(pathToTheFile);
+    }
+
+    public void clickSaveAndAddNew(){
+        waitUntilLoaderMaskDisappear();
+        BrowserUtils.clickWithWait(saveAndCloseToggle);
+        BrowserUtils.waitForVisibility(saveAndNew, 5);
+        BrowserUtils.clickWithWait(saveAndNew);
+        // After insert first car information, click Save and New
+    }
+
+    public void clickSaveAndClose(){
+        waitUntilLoaderMaskDisappear();
+        BrowserUtils.clickWithWait(saveAndCloseToggle);
+        BrowserUtils.waitForVisibility(saveAndCloseButtonFromMenuElement, 5);
+        BrowserUtils.clickWithWait(saveAndCloseButtonFromMenuElement);
+        // After insert 2nd car info, click Save and Close
     }
 
 }
