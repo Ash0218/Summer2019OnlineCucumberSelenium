@@ -30,7 +30,7 @@ import org.junit.runner.RunWith;
 
          //   dryRun = true, // 12
 
-           //     tags = "@smoke_test", // 8
+                tags = "@smoke_test", // 8
         // replaced #6 to #8.
         // #8 was added after creating SmokeTest.feature in feature
         //  file. Then, change #5 to True (it was false before). Then
@@ -43,10 +43,11 @@ import org.junit.runner.RunWith;
         //    tags = "@login_with_role_ddt", // 15
          //   tags = "@login_with_credentials_ddt", // 16
          //   tags = "@login_with_roles_ddt_2", // 17
-            tags = "@create_car", // 18
+         //   tags = "@create_car", // 18
 
             plugin = {"html:target/default-cucumber-reports",
-                    "json:target/cucumber.json"} // 7
+                    "json:target/cucumber.json",
+                    "rerun:target/rerun.txt"} // 7
             // added "json:target/cucumber.json" on 121919
 
 
