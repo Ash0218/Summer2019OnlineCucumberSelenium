@@ -23,12 +23,12 @@ import org.junit.runner.RunWith;
         Verifying page subtitle: Dashboard
          */
 
-            dryRun = false, // 5
+         //   dryRun = false, // 5
          //   tags = "@store_manager", // 6
             // put @store_manager in "", then only store manager part will
             //  be executed.
 
-         //   dryRun = true, // 12
+            dryRun = true, // 12
 
            //     tags = "@smoke_test", // 8
         // replaced #6 to #8.
@@ -42,7 +42,8 @@ import org.junit.runner.RunWith;
         //    tags = "@login_with_role", // 14
         //    tags = "@login_with_role_ddt", // 15
          //   tags = "@login_with_credentials_ddt", // 16
-            tags = "@login_with_roles_ddt_2", // 17
+         //   tags = "@login_with_roles_ddt_2", // 17
+            tags = "@create_car", // 18
 
             plugin = {"html:target/default-cucumber-reports",
                     "json:target/cucumber.json"} // 7

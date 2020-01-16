@@ -1,3 +1,4 @@
+@create_car
 Feature: Create new car
 
 

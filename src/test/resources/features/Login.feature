@@ -126,3 +126,13 @@ Feature: Login
       | sales manager | Activities | Calendar Events | All - Calendar Events - Activities                                 |
       | sales manager | System     | Jobs            | All - Jobs - System                                                |
      # this table can be merged with the Examples: drivers table
+
+
+    Examples: store managers
+      | role          | module     | sub module      | title                                                              |
+      | store manager | Fleet      | Vehicles        | All - Car - Entities - System - Car - Entities - System            |
+      | store manager | Fleet      | Vehicles Model  | All - Vehicles Model - Entities - System - Car - Entities - System |
+      | store manager | Customers  | Accounts        | All - Accounts - Customers                                         |
+      | store manager | Customers  | Contacts        | All - Contacts - Customers                                         |
+      | store manager | Activities | Calendar Events | All - Calendar Events - Activities                                 |
+      | store manager | System     | Jobs            | All - Jobs - System                                                |
