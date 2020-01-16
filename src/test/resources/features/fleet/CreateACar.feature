@@ -9,6 +9,8 @@ Feature: Create new car
     Then user adds new car information:
       | License Plate | Driver     | Location        | Model Year | Color |
       |TestPlates     | Test Driver| Washington D.C. | 2020       | Black |
+      |SuperMan       | Cool Driver| Texas           | 2019       | Red   |
+
 
      # | key  |
      # | value|

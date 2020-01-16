@@ -43,6 +43,7 @@ public class CreateCarStepDefinitions {
         createCarPage.waitUntilLoaderMaskDisappear();
         // wait
         System.out.println(dataTable);
+        int row = 1;
         for (Map<String, String> map : dataTable){
             // put all the information of the columns inside Map.
             createCarPage.licensePlateElement.sendKeys(map.get("License Plate"));
@@ -54,8 +55,20 @@ public class CreateCarStepDefinitions {
             createCarPage.modelYearElement.sendKeys(map.get("Model Year"));
             createCarPage.colorElement.sendKeys(map.get("Color"));
             BrowserUtils.wait(2); // for demo
-            createCarPage.saveAndCloseButtonElement.click();
+           // createCarPage.saveAndCloseButtonElement.click();
+            // this will not work for 2nd car, so add "int row = 1;" above
+            //  and don't use this
+
+            if (row == dataTable.size()) {
+                //if it's a last row - click save and close
+                createCarPage.clickSaveAndClose();
+            } else {
+                //if it's not the last row - click save and add new
+                createCarPage.clickSaveAndAddNew();
+            }
+
             BrowserUtils.wait(2); // for demo
+            row++;
         }
     }
 
