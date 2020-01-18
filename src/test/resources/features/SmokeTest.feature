@@ -13,13 +13,13 @@ Feature: Smoke test
 
   Scenario: Verify Manage Dashboards page
       And user navigates to "Dashboards" then to "Manage Dashboards"
-      Then user verifies that "All" page subtitle is displayed
+      Then user verifies that "All Manage Dashboards" page subtitle is displayed
       # syntax such as Then, When, And does not matter -> you can put
       #  anything.
 
   Scenario: Verify Vehicle page
     And user navigates to "Fleet" then to "Vehicles"
-    Then user verifies that "All" page subtitle is displayed
+    Then user verifies that "All Cars" page subtitle is displayed
 
   Scenario: Verify Accounts page
     And user navigates to "Customers" then to "Accounts"
