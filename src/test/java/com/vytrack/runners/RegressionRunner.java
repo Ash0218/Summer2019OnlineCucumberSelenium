@@ -10,6 +10,8 @@ import org.junit.runner.RunWith;
         features = {
                 "src/test/resources/features/activities",
                 "src/test/resources/features/fleet"
+                // Instead of using tags like other runners, I added
+                //  2 locations to test Activities and Fleet modules.
         },
         glue = "com/vytrack/step_definitions",
         dryRun = false,
