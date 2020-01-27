@@ -77,7 +77,8 @@ public class Driver {
                     try {
                         ChromeOptions chromeOptions = new ChromeOptions();
                         chromeOptions.setCapability("platform", Platform.ANY);
-                        driverPool.set(new RemoteWebDriver(new URL("http://ec2-54-166-190-92.compute-1.amazonaws.com:4444/wd/hub"), chromeOptions));
+                        driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), chromeOptions));
+                            // or use this url: http://ec2-54-166-190-92.compute-1.amazonaws.com:4444/wd/hub
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
