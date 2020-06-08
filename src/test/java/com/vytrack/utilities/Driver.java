@@ -1,5 +1,6 @@
 package com.vytrack.utilities; // 112619
 
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -93,6 +94,21 @@ public class Driver {
                         e.printStackTrace();
                     }
                     break;
+                case "mobile_chrome":
+                    try {
+                        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                        desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel_2");
+                        desiredCapabilities.setCapability(MobileCapabilityType.VERSION, "7.0");
+                        desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
+                        desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
+                        driverPool.set(new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+                default:
+                    throw new RuntimeException("Invalid browser name!");
             }
 
         }
