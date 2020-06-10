@@ -30,7 +30,7 @@ import org.junit.runner.RunWith;
 
          //   dryRun = true, // 12
 
-                tags = "@smoke_test", // 8
+                tags = "@negative_test", // 8
         // replaced #6 to #8.
         // #8 was added after creating SmokeTest.feature in feature
         //  file. Then, change #5 to True (it was false before). Then

@@ -1,6 +1,7 @@
 package com.vytrack.step_definitions; // 121719
 
 
+import com.vytrack.utilities.ConfigurationReader;
 import com.vytrack.utilities.Driver;
 import io.cucumber.core.api.Scenario;
 import io.cucumber.java.After;
@@ -17,6 +18,11 @@ public class Hook {
         System.out.println("################################"); // 8
         System.out.println("Test setup!"); // 2
    //     Driver.get().manage().window().maximize(); // 14
+
+        String browser = ConfigurationReader.getProperty("browser"); // 16
+        if (!browser.contains("remote") && !browser.contains("mobile")) { // 17
+            Driver.get().manage().window().maximize(); // 18
+        }
 
     }
 
