@@ -96,11 +96,16 @@ public class Driver {
                     break;
                 case "mobile_chrome":
                     try {
+                        // chrome options are used to parametrize browser
+                        ChromeOptions chromeOptions = new ChromeOptions();
+                        chromeOptions.addArguments("--incognito");
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel_2");
                         desiredCapabilities.setCapability(MobileCapabilityType.VERSION, "7.0");
                         desiredCapabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
                         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
+                        desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+
                         driverPool.set(new RemoteWebDriver(new URL("http://localhost:4723/wd/hub"), desiredCapabilities));
                     } catch (Exception e) {
                         e.printStackTrace();
