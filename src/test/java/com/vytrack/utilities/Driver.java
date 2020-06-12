@@ -23,6 +23,10 @@ public class Driver {
     // “ThreadLocal” covers your driver and data and clone it, so it can
     // This is for parallel testing
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
+    private static String USERNAME = "strawberryshortc1";
+    private static String AUTOMATE_KEY = "mMzXXSa5ECN4BfqXZLdm";
+    public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
 
     private Driver() {
 
@@ -110,7 +114,23 @@ public class Driver {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                    break;
+                case "mobile_chrome_remote":
+                    try {
+                        DesiredCapabilities caps = new DesiredCapabilities();
 
+                        caps.setCapability("browserName", "android");
+                        caps.setCapability("device", "Galaxy S8");
+                        caps.setCapability("realMobile", "true");
+                        caps.setCapability("os_version", "7.0");
+
+                        caps.setCapability("name", "Vytrack tests");
+
+                        WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     throw new RuntimeException("Invalid browser name!");
