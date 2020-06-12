@@ -25,7 +25,7 @@ public class Driver {
     private static ThreadLocal<WebDriver> driverPool = new ThreadLocal<>();
     private static String USERNAME = "strawberryshortc1";
     private static String AUTOMATE_KEY = "mMzXXSa5ECN4BfqXZLdm";
-    public static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+    private static final String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 
     private Driver() {
@@ -126,7 +126,7 @@ public class Driver {
 
                         caps.setCapability("name", "Vytrack tests");
 
-                        WebDriver driver = new RemoteWebDriver(new URL(URL), caps);
+                        driverPool.set(new RemoteWebDriver(new URL(URL), caps));
 
                     } catch (Exception e) {
                         e.printStackTrace();
